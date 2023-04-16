@@ -6,7 +6,17 @@ import { staggerContainer } from "../utils/motion";
 const SectionWrapper = (Component: JSX.Element, idName: string) =>
 	function HOC() {
 		return (
-			<motion.section>
+			<motion.section
+				variants={staggerContainer()}
+				initial="hidden"
+				whileInView={"show"}
+				viewport={{ once: true, amount: 0.25 }}
+			>
+				{/**
+				 * variants={staggerContainer()} => animate the sections
+				 * initial="hidden" =>
+				 * whileInView={"show"} =>
+				 */}
 				<Component key={idName} />
 			</motion.section>
 		);
